@@ -28,3 +28,30 @@ It requires variables:
 - `R2_SECRET_ACCESS_KEY`
 
 to upload R2 cache via rclone, otherwise it fallbacks to default upload which fails because of CF Account rate limit.
+
+# Deployment
+
+## API Deployment
+
+```
+cd isr-cache-upload-api
+npm install
+npm run deploy
+```
+
+This deployment will generate URL to the API. Use this URL and set it in .env.local as `NEXT_PUBLIC_API_BASE_URL` variable
+
+## OpenNext Frontend Deployment
+
+```
+cd isr-cache-upload-opennext
+npm install
+npm run db:init
+npm run deploy
+```
+
+As a result you will have blog application deployed.
+
+```
+NOTE: Deployment will succed if rclone is configured.
+```
