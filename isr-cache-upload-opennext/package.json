@@ -1,0 +1,40 @@
+{
+	"name": "isr-cache-upload-opennext",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+		"upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+		"cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts",
+		 "r2:init": "wrangler r2 bucket create isr-cache-upload-opennext-cache",
+		"db:init": "chmod +x ./db/init.sh && ./db/init.sh",
+		"db:schema": "wrangler d1 execute isr-cache-upload-opennext_cache_d1 --file=./db/schema.sql --remote",
+		"db:query": "wrangler d1 execute isr-cache-upload-opennext_cache_d1 --remote",
+		"db:local": "wrangler d1 execute isr-cache-upload-opennext_cache_d1 --local"
+	},
+	"dependencies": {
+		"@mantine/core": "^8.3.14",
+		"@mantine/hooks": "^8.3.14",
+		"@opennextjs/cloudflare": "https://pkg.pr.new/@opennextjs/cloudflare@1116",
+		"next": "16.1.5",
+		"react": "19.1.5",
+		"react-dom": "19.1.5"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3",
+		"@tailwindcss/postcss": "^4",
+		"@types/node": "^20.19.33",
+		"@types/react": "^19.1.5",
+		"@types/react-dom": "^19.1.5",
+		"eslint": "^9",
+		"eslint-config-next": "15.4.6",
+		"tailwindcss": "^4",
+		"typescript": "^5.7.4",
+		"wrangler": "^4.65.0"
+	}
+}
